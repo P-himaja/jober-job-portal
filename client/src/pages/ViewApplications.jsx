@@ -77,7 +77,7 @@ const ViewApplications = () => {
                 <img src={assets.resume_download_icon} alt="" /></a>
               </td>
               <td className='py-2 px-4 border-b relative border-gray-200'>
-              {applicant.status === 'Pending ' ? 
+              {applicant.status === 'Pending' ? 
               <>
  <div className='relative inline-block text-left group'>
                 <button className='text-gray-500 action-button'>...</button>

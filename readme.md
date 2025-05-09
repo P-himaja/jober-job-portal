@@ -60,7 +60,7 @@ A full-stack job portal that seamlessly connects recruiters with job seekers. Bu
 ---
 
 ## 📸 Screenshots
-```md
+
 ### 🖼️ Homepage – Job Listings
 ![Homepage](./screenshots/homepage.png)
 ![Job Listings](./screenshots/jobs.png)

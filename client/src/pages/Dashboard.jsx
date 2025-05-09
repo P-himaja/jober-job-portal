@@ -1,26 +1,47 @@
 import React from 'react'
 import { Outlet, useNavigate ,NavLink } from 'react-router-dom'
 import { assets } from '../assets/assets'
+import { useContext ,useEffect} from 'react'
+import { AppContext } from '../context/AppContext'
 
 const Dashboard = () => {
   const navigate = useNavigate()
+
+  const {companyData,setCompanyData,setCompanyToken} = useContext(AppContext)
+
+  // Function to logout for company 
+  const logout = () =>{
+    setCompanyToken(null)
+    localStorage.removeItem('companyToken')
+    setCompanyData(null)
+    navigate('/')
+  }
+
+  useEffect(() => {
+if(companyData){
+  navigate('/dashboard/manage-jobs')
+}
+  }, [companyData])
+  
   return (
     <div className=' min-h-screen'>
     {/* Navbar for recruiter Panel */}
     <div className='shadow py-4'>
       <div className='px-5 flex justify-between items-center'>
         <img onClick={e => navigate("/")} className="max-sm:w-32 w-30 cursor-pointer" src={assets.logo} alt="" />
+        {companyData && (
         <div className='flex items-center gap-3'>
-          <p className='max-sm:hidden'>Welcome, GreatStack</p>
+          <p className='max-sm:hidden'>Welcome, {companyData.name}</p>
           <div className='relative group'>
-            <img className="w-8 border-none rounded-full" src={assets.company_icon} alt="" />
+            <img className="w-8 border-none rounded-full" src={companyData.image} alt="" />
             <div className='absolute hidden group-hover:block top-0 right-0 z-10 text-black rounded pt-12'>
               <ul className='list-none m-0 p-2 bg-white rounded-md text-sm'>
-                <li className='py-1 px-2 cursor-pointer pr-10'>Logout</li>
+                <li onClick={logout} className='py-1 px-2 cursor-pointer pr-10'>Logout</li>
               </ul>
             </div>
           </div>
         </div>
+      )}
       </div>
     </div>
 
@@ -45,10 +66,10 @@ const Dashboard = () => {
       </ul>
     </div>
 
-    <div>
+    <div className='flex-1 h-full p-2 sm:p-5'>
 
-    </div>
     <Outlet/>
+    </div>
     </div>
  
     </div>

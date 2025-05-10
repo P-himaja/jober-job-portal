@@ -66,4 +66,4 @@ A full-stack job portal that seamlessly connects recruiters with job seekers. Bu
 ![Job Listings](./screenshots/jobs.png)
 
 ### 🧾 Applied Jobs
-![Applied Jobs](./screenshots/job.png)
+![Applied Jobs](./screenshots/applied.png)
